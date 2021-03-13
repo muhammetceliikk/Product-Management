@@ -61,7 +61,7 @@ public class ProductListPage extends VerticalLayout {
         container.addContainerProperty("name", String.class, null);
         container.addContainerProperty("kodu", String.class, null);
         container.addContainerProperty("price", BigDecimal.class, null);
-        container.addContainerProperty("guncelle", SyEditButton.class, null);
+        container.addContainerProperty("update", SyEditButton.class, null);
     }
 
     private void fillTable() {
@@ -75,8 +75,8 @@ public class ProductListPage extends VerticalLayout {
             item.getItemProperty("kodu").setValue(product.getKodu());
             item.getItemProperty("price").setValue(product.getPrice());
 
-            SyEditButton guncelle = new SyEditButton();
-            guncelle.addClickListener(new Button.ClickListener() {
+            SyEditButton update = new SyEditButton();
+            update.addClickListener(new Button.ClickListener() {
                 @Override
                 public void buttonClick(Button.ClickEvent clickEvent) {
 
@@ -87,7 +87,7 @@ public class ProductListPage extends VerticalLayout {
                     contentComponent.addComponent(productPage);
                 }
             });
-            item.getItemProperty("guncelle").setValue(guncelle);
+            item.getItemProperty("update").setValue(update);
         }
     }
 }

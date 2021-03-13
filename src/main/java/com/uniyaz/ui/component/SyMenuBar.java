@@ -1,6 +1,8 @@
 package com.uniyaz.ui.component;
 
 import com.uniyaz.ui.SyUI;
+import com.uniyaz.ui.page.CustomerListPage;
+import com.uniyaz.ui.page.CustomerPage;
 import com.uniyaz.ui.page.ProductListPage;
 import com.uniyaz.ui.page.ProductPage;
 import com.vaadin.server.FontAwesome;
@@ -20,13 +22,13 @@ public class SyMenuBar extends MenuBar {
         SyUI syUI = (SyUI) UI.getCurrent();
         contentComponent = syUI.getContentComponent();
 
-        buildUrunIslemleriMenuItem();
-        buildMusteriIslemleriMenuItem();
+        buildProductTransactionsMenuItem();
+        buildCustomerTransactionsMenuItem();
     }
 
-    private void buildUrunIslemleriMenuItem() {
-        MenuItem urunIslemleriMenuItem = addItem("Ürün İşlemleri", null);
-        urunIslemleriMenuItem.addItem("Ürün Ekle", FontAwesome.PLUS, new Command() {
+    private void buildProductTransactionsMenuItem() {
+        MenuItem productTransactionsMenuItem = addItem("Product Transactions", null);
+        productTransactionsMenuItem.addItem("Add Product", FontAwesome.PLUS, new Command() {
             @Override
             public void menuSelected(MenuItem menuItem) {
                 ProductPage productPage = new ProductPage();
@@ -34,7 +36,7 @@ public class SyMenuBar extends MenuBar {
             }
         });
 
-        urunIslemleriMenuItem.addItem("Ürün Listele", FontAwesome.LIST, new Command() {
+        productTransactionsMenuItem.addItem("List Products", FontAwesome.LIST, new Command() {
             @Override
             public void menuSelected(MenuItem menuItem) {
                 ProductListPage productListPage = new ProductListPage();
@@ -43,19 +45,21 @@ public class SyMenuBar extends MenuBar {
         });
     }
 
-    private void buildMusteriIslemleriMenuItem() {
-        MenuItem MusteriIslemleriMenuItem = addItem("Müşteri İşlemleri", null);
-        MusteriIslemleriMenuItem.addItem("Müşteri Ekle", FontAwesome.PLUS, new Command() {
+    private void buildCustomerTransactionsMenuItem() {
+        MenuItem customerTransactionsMenuItem = addItem("Customer Transactions", null);
+        customerTransactionsMenuItem.addItem("Add Customer", FontAwesome.PLUS, new Command() {
             @Override
             public void menuSelected(MenuItem menuItem) {
-
+                CustomerPage customerPage = new CustomerPage();
+                contentComponent.addComponent(customerPage);
             }
         });
 
-        MusteriIslemleriMenuItem.addItem("Müşteri Listele", FontAwesome.LIST, new Command() {
+        customerTransactionsMenuItem.addItem("List Customers", FontAwesome.LIST, new Command() {
             @Override
             public void menuSelected(MenuItem menuItem) {
-
+                CustomerListPage customerListPage = new CustomerListPage();
+                contentComponent.addComponent(customerListPage);
             }
         });
     }

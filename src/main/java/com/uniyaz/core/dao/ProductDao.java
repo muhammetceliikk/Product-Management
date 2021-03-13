@@ -76,8 +76,8 @@ public class ProductDao {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         try (Session session = sessionFactory.openSession()) {
             String hql =
-                    "Select     urunAlias.id, urunAlias.kodu " +
-                    "From       Product urunAlias ";
+                    "Select     productAlias.id, productAlias.kodu " +
+                    "From       Product productAlias ";
             Query query = session.createQuery(hql);
             query.setResultTransformer(Transformers.aliasToBean(ProductDto.class));
             return query.list();
@@ -90,7 +90,7 @@ public class ProductDao {
     public List<ProductDtoNative> findAllNative() {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         try (Session session = sessionFactory.openSession()) {
-            NativeQuery sqlQuery = session.createSQLQuery("SELECT * FROM URUN");
+            NativeQuery sqlQuery = session.createSQLQuery("SELECT * FROM PRODUCT");
             Query query = sqlQuery.setResultTransformer(Transformers.aliasToBean(ProductDtoNative.class));
             return query.list();
         } catch (Exception e) {
