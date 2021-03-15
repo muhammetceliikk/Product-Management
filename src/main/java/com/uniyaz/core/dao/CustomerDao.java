@@ -27,10 +27,7 @@ public class CustomerDao {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            String qryString = "delete from Customer c where c.id=:cid";
-            Query query = session.createQuery(qryString);
-            query.setParameter("cid", customer.getId());
-            query.executeUpdate();
+            session.delete(customer);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();

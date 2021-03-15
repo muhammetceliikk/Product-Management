@@ -78,6 +78,7 @@ public class CustomerPage extends VerticalLayout {
                 } catch (Exception e) {
                     Notification.show(e.getMessage(), Notification.Type.ERROR_MESSAGE);
                 }
+                Notification.show(customerBeanItem.getBean().getName()+" kaydedildi.");
             }
         });
         horizontalLayout.addComponent(sySaveButton);

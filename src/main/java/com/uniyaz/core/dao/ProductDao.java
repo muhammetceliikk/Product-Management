@@ -35,10 +35,7 @@ public class ProductDao {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-            String qryString = "delete from Product u where u.id=:uid";
-            Query query = session.createQuery(qryString);
-            query.setParameter("uid", product.getId());
-            query.executeUpdate();
+            session.delete(product);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();

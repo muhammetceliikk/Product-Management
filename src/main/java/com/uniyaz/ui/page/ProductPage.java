@@ -95,6 +95,7 @@ public class ProductPage extends VerticalLayout {
                 } catch (Exception e) {
                     Notification.show(e.getMessage(), Notification.Type.ERROR_MESSAGE);
                 }
+                Notification.show(productBeanItem.getBean().getName()+productBeanItem.getBean().getKodu()+" kaydedildi.");
             }
         });
         horizontalLayout.addComponent(sySaveButton);
