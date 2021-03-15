@@ -1,10 +1,7 @@
 package com.uniyaz.ui.component;
 
 import com.uniyaz.ui.SyUI;
-import com.uniyaz.ui.page.CustomerListPage;
-import com.uniyaz.ui.page.CustomerPage;
-import com.uniyaz.ui.page.ProductListPage;
-import com.uniyaz.ui.page.ProductPage;
+import com.uniyaz.ui.page.*;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.UI;
@@ -24,6 +21,7 @@ public class SyMenuBar extends MenuBar {
 
         buildProductTransactionsMenuItem();
         buildCustomerTransactionsMenuItem();
+        buildCustomerProductTransactionsMenuItem();
     }
 
     private void buildProductTransactionsMenuItem() {
@@ -60,6 +58,24 @@ public class SyMenuBar extends MenuBar {
             public void menuSelected(MenuItem menuItem) {
                 CustomerListPage customerListPage = new CustomerListPage();
                 contentComponent.addComponent(customerListPage);
+            }
+        });
+    }
+    private void buildCustomerProductTransactionsMenuItem() {
+        MenuItem CustomerProductTransactionsPage = addItem("Order Transactions", null);
+        CustomerProductTransactionsPage.addItem("Add Order", FontAwesome.PLUS, new Command() {
+            @Override
+            public void menuSelected(MenuItem menuItem) {
+                CustomerProductPage customerProductPage = new CustomerProductPage();
+                contentComponent.addComponent(customerProductPage);
+            }
+        });
+
+        CustomerProductTransactionsPage.addItem("List Orders", FontAwesome.LIST, new Command() {
+            @Override
+            public void menuSelected(MenuItem menuItem) {
+                CustomerProductListPage customerProductListPage= new CustomerProductListPage();
+                contentComponent.addComponent(customerProductListPage);
             }
         });
     }

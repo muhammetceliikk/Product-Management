@@ -28,16 +28,6 @@ public class Product extends BaseEntity {
     @Column(precision = 15, scale = 2)
     private BigDecimal price;
 
-    private Customer customer;
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     @Override
     public Long getId() {
         return id;

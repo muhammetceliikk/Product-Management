@@ -1,5 +1,6 @@
 package com.uniyaz.ui;
 
+import com.uniyaz.core.domain.Customer;
 import com.uniyaz.core.utils.HibernateUtil;
 import com.uniyaz.ui.component.ContentComponent;
 import com.uniyaz.ui.component.SyMenuBar;
@@ -26,6 +27,7 @@ public class SyUI extends UI {
 
     private VerticalLayout mainLayout;
     private ContentComponent contentComponent;
+    private Customer customer;
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -59,5 +61,9 @@ public class SyUI extends UI {
 
     public void setContentComponent(ContentComponent contentComponent) {
         this.contentComponent = contentComponent;
+    }
+
+    public Customer getCustomer() {
+        return customer;
     }
 }
